@@ -18,7 +18,7 @@
     <tbody>
       <% @jobs.each do |job| %>
       <tr>
-        <td>#</td>
+        <td><%= render_job_status(job)%></td>
         <td><%= link_to(job.title,admin_job_path(job))%></td>
         <td><%= simple_format(job.description) %></td>
         <td><%= job.wage_lower_bound%></td>
@@ -33,4 +33,7 @@
 
     </tbody>
   </table>
+  <div class="text-center">
+    <%= will_paginate @jobs %>
+  </div>
 </div>
