@@ -1,7 +1,8 @@
 class Admin::JobsController < ApplicationController
     before_action :authenticate_user!, only:[:new,:create, :edit, :destroy, :update]
-    before_action :find_job, only:[:edit, :show, :update, :destroy]
+    before_action :find_job, only:[:edit, :show, :update, :destroy,:hide,:publish]
     before_action :require_is_admin
+    layout "aadmin"
     def index
       @jobs = Job.all.recent.paginate(:page => params[:page],:per_page => 10)
     end
@@ -39,6 +40,14 @@ class Admin::JobsController < ApplicationController
     def destroy
       @job.destroy
       redirect_to admin_jobs_path,alert:"Job Deleted"
+    end
+    def hide
+      @job.hide!
+      redirect_to :back
+    end
+    def publish
+      @job.publish!
+      redirect_to :back
     end
 
     private

@@ -1,9 +1,9 @@
 module JobsHelper
   def render_job_status(job)
     if job.is_hidden
-      "(Hidden)"
+      link_to(content_tag(:span,"",:class => "fa fa-lock"),publish_admin_job_path(job), :method => :post, :class => "btn btn-xs ")
     else
-      "(Public)"
-    end 
+      link_to(content_tag(:span,"",:class => "fa fa-globe"),hide_admin_job_path(job), :method => :post, :class => "btn btn-xs ")
+    end
   end
 end
