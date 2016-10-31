@@ -1,5 +1,15 @@
 <div class="col-md-12">
-
+  <div class="dropdown clearfix pull-right">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="ture">
+      Order
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelldby="dropdownMenuDivider">
+      <%= link_to("By wage upper bound",jobs_path(:order => "by_wage_upper_bounder"))%>
+      <br><%= link_to("By wage lower bound",jobs_path(:order => "by_wage_lower_bounder"))%>
+      <br><%= link_to("By Recent",jobs_path)%>
+    </ul>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
